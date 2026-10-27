@@ -1,4 +1,5 @@
 ﻿using SanalPosTR.Configuration;
+using SanalPosTR.Providers.AkbankPos;
 using SanalPosTR.Providers.Est;
 using SanalPosTR.Providers.Ykb;
 using System;
@@ -16,7 +17,8 @@ namespace SanalPosTR
             { BankTypes.Isbank, typeof(NestPayProviderService) },
             { BankTypes.Ykb, typeof(YKBProviderServices) },
             { BankTypes.KuveytTurk, typeof(KuveytTurkProviderServices) },
-            { BankTypes.Garanti, typeof(GarantiProviderService) }
+            { BankTypes.Garanti, typeof(GarantiProviderService) },
+            { BankTypes.AkbankPos, typeof(AkbankPosProviderService) }
 
         };
 
@@ -31,6 +33,7 @@ namespace SanalPosTR
             { BankTypes.Ykb,  new YKBConfiguration() },
             { BankTypes.KuveytTurk, new KuveytTurkConfiguration() },
             { BankTypes.Garanti, new GarantiConfiguration() },
+            { BankTypes.AkbankPos, new AkbankPosConfiguration() },
 
         };
 
@@ -50,6 +53,12 @@ namespace SanalPosTR
                     SecureEndPointApi="boa.virtualpos.services/Home/ThreeDModelPayGate",
                     SecureReturnEndPoint="boa.virtualpos.services/Home/ThreeDModelProvisionGate"
                 }
+            },
+            {BankTypes.AkbankPos, new AkbankPosEndPointConfiguration
+                {
+                    BaseUrl = "https://apipre.akbank.com",
+                    GatewayBaseUrl = "https://virtualpospaymentgatewaypre.akbank.com"
+                }
             }
         };
 
@@ -67,7 +76,13 @@ namespace SanalPosTR
                 BaseUrl="https://sanalpos.kuveytturk.com.tr",
                 SecureEndPointApi="ServiceGateWay/Home/ThreeDModelPayGate",
                 SecureReturnEndPoint="ServiceGateWay/Home/ThreeDModelProvisionGate"
-            } }
+            } },
+            {BankTypes.AkbankPos, new AkbankPosEndPointConfiguration
+                {
+                    BaseUrl = "https://api.akbank.com",
+                    GatewayBaseUrl = "https://virtualpospaymentgateway.akbank.com"
+                }
+            }
         };
     }
 }

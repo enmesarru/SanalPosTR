@@ -36,6 +36,7 @@ SanalPosTR, Türkiye'deki bankaların sanal POS sistemlerini tek bir ortak aray�
 | Yapı Kredi (YKB) | Posnet | ✅ | ✅ | ✅ |
 | Garanti BBVA | Garanti | ✅ | ✅ | ✅ |
 | Kuveyt Türk | BOA | ✅ | ❌ | ❌ |
+| Akbank (yeni altyapı, `AkbankPos`) | Akbank Sanal POS (JSON, HMAC-SHA512) | ✅ | ✅ | ✅ |
 | DenizBank | — | ❌ | ❌ | ❌ |
 | VakıfBank | — | ❌ | ❌ | ❌ |
 

@@ -126,6 +126,19 @@ namespace SanalPosTR
             }
         }
 
+        public static string GetHMACSHA512Base64(string text, string key)
+        {
+            return GetHMACSHA512Base64(Encoding.UTF8.GetBytes(text), key);
+        }
+
+        public static string GetHMACSHA512Base64(byte[] data, string key)
+        {
+            using (var hmac = new HMACSHA512(Encoding.UTF8.GetBytes(key)))
+            {
+                return Convert.ToBase64String(hmac.ComputeHash(data));
+            }
+        }
+
         public static string GetSHA512(string text)
         {
             UnicodeEncoding UE = new UnicodeEncoding();
