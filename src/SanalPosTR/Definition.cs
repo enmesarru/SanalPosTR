@@ -1,6 +1,7 @@
 ﻿using SanalPosTR.Configuration;
 using SanalPosTR.Providers.AkbankPos;
 using SanalPosTR.Providers.Est;
+using SanalPosTR.Providers.VakifBank;
 using SanalPosTR.Providers.Ykb;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,8 @@ namespace SanalPosTR
             { BankTypes.Ykb, typeof(YKBProviderServices) },
             { BankTypes.KuveytTurk, typeof(KuveytTurkProviderServices) },
             { BankTypes.Garanti, typeof(GarantiProviderService) },
-            { BankTypes.AkbankPos, typeof(AkbankPosProviderService) }
+            { BankTypes.AkbankPos, typeof(AkbankPosProviderService) },
+            { BankTypes.VakifBank, typeof(VakifBankProviderService) }
 
         };
 
@@ -34,6 +36,7 @@ namespace SanalPosTR
             { BankTypes.KuveytTurk, new KuveytTurkConfiguration() },
             { BankTypes.Garanti, new GarantiConfiguration() },
             { BankTypes.AkbankPos, new AkbankPosConfiguration() },
+            { BankTypes.VakifBank, new VakifBankConfiguration() },
 
         };
 
@@ -59,6 +62,12 @@ namespace SanalPosTR
                     BaseUrl = "https://apipre.akbank.com",
                     GatewayBaseUrl = "https://virtualpospaymentgatewaypre.akbank.com"
                 }
+            },
+            {BankTypes.VakifBank, new VakifBankEndPointConfiguration
+                {
+                    BaseUrl = "https://inbound.apigatewaytest.vakifbank.com.tr:8443",
+                    EnrollmentBaseUrl = "https://inbound.apigatewaytest.vakifbank.com.tr:8443"
+                }
             }
         };
 
@@ -81,6 +90,12 @@ namespace SanalPosTR
                 {
                     BaseUrl = "https://api.akbank.com",
                     GatewayBaseUrl = "https://virtualpospaymentgateway.akbank.com"
+                }
+            },
+            {BankTypes.VakifBank, new VakifBankEndPointConfiguration
+                {
+                    BaseUrl = "https://apigw.vakifbank.com.tr:8443",
+                    EnrollmentBaseUrl = "https://inbound.apigateway.vakifbank.com.tr:8443"
                 }
             }
         };

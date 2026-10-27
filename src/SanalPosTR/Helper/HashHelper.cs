@@ -116,6 +116,15 @@ namespace SanalPosTR
             }
         }
 
+        public static string GetSHA256WithISO88599(string text)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.GetEncoding("ISO-8859-9").GetBytes(text));
+                return Convert.ToBase64String(bytes);
+            }
+        }
+
         public static string GetSHA512Base64(string text)
         {
             using (SHA512 sha = SHA512.Create())
